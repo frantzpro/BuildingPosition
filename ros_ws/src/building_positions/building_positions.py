@@ -8,7 +8,7 @@ from std_msgs.msg import String
 from sensor_msgs.msg import Joy
 
 from AbstractVirtualCapability import AbstractVirtualCapability, VirtualCapabilityServer, formatPrint
-from BuildPos import BuildPos
+from BuildingPosition import BuildingPosition
 
 tfBuffer = None
 listener = None
@@ -38,9 +38,9 @@ if __name__ == '__main__':
 	listener = tf2_ros.TransformListener(tfBuffer)
 
 	server = VirtualCapabilityServer(int(rospy.get_param('~semantix_port')))
-	kobuki = KobukiTeleop(server)
+	kobuki = BuildingPosition(server)
 
-	kobuki.functionality["GetKobukiPosition"] = get_position
+	kobuki.functionality["GetBuildingPosition"] = get_position
 
 	kobuki.start()
 

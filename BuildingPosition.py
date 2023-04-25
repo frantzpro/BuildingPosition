@@ -7,7 +7,7 @@ from time import sleep
 from AbstractVirtualCapability import AbstractVirtualCapability, VirtualCapabilityServer, formatPrint
 
 
-class BuildPos(AbstractVirtualCapability):
+class BuildingPosition(AbstractVirtualCapability):
     def __init__(self, server):
         super().__init__(server)
 
@@ -34,7 +34,7 @@ if __name__ == '__main__':
         if len(sys.argv[1:]) > 0:
             port = int(sys.argv[1])
         server = VirtualCapabilityServer(port)
-        listener = BuildPos(server)
+        listener = BuildingPosition(server)
         listener.start()
         signal.signal(signal.SIGTERM, handler)
         listener.join()
