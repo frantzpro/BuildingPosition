@@ -12,7 +12,7 @@ class BuildingPosition(AbstractVirtualCapability):
         super().__init__(server)
         self.functionality = {"GetBuildingPosition": None}
 
-    def GetKobukiPosition(self, params: dict) -> dict:
+    def GetBuildingPosition(self, params: dict) -> dict:
         if self.functionality["GetBuildingPosition"] is not None:
             pos = self.functionality["GetBuildingPosition"]()
             return {"Position3D": pos}
