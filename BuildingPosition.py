@@ -14,7 +14,7 @@ class BuildingPosition(AbstractVirtualCapability):
 
     def GetBuildingPosition(self, params: dict) -> dict:
         if self.functionality["GetBuildingPosition"] is not None:
-            vicon_name = param["SimpleStringParameter"]
+            vicon_name = params["SimpleStringParameter"]
             pos = self.functionality["GetBuildingPosition"](vicon_name)
             return {"Position3D": pos}
         else:
