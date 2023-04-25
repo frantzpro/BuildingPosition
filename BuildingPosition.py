@@ -14,7 +14,7 @@ class BuildingPosition(AbstractVirtualCapability):
 
     def GetBuildingPosition(self, params: dict) -> dict:
         if self.functionality["GetBuildingPosition"] is not None:
-            pos = self.functionality["GetBuildingPosition"]()
+            pos = self.functionality["GetBuildingPosition"]('turtlebot')
             return {"Position3D": pos}
         else:
             return {"Position3D": [0., 0., 0.]}
