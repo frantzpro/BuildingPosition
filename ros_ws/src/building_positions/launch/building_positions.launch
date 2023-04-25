@@ -1,0 +1,20 @@
+<launch>
+    <!--
+    Push the left frontal button labeled as 'LB' to activate cmd_vel publishing.
+    Move the left stick around to control the velocity.
+    -->
+    <arg name="vicon_map" value="world"/>
+    <arg name="semantix_port" default="7500"/>
+
+    <include file="$(find vrpn_client_ros)/launch/sample.launch">
+        <arg name="server" value="172.20.37.251" />
+    </include>
+
+    <node pkg="building_positions" type="building_positions.py" name="joy_reader">
+        <param name="world" value="$(arg vicon_map)"/>
+        <param name="position" value="turtlebot/position"/>
+        <param name="map" value="turtlebot/map"/>
+        <param name="semantix_port" value="$(arg semantix_port)"/>
+    </node>
+    
+</launch>
