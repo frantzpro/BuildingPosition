@@ -27,7 +27,7 @@ COPY protocols /etc
 # Build Ros-Pkg and build
 #RUN cd /ros_ws && source /opt/ros/noetic/setup.bash && catkin build turtlebot ycos_cmd_vel_mux ycos_controllers ycos_velocity_smoother
 
-COPY /BuildPos.py /ros_ws/src/building_positions
+COPY /BuildingPosition.py /ros_ws/src/building_positions
 COPY /AbstractVirtualCapability.py /ros_ws/src/building_positions
 COPY /requirements /var
 
