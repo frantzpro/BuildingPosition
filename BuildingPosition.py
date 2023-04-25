@@ -10,6 +10,7 @@ from AbstractVirtualCapability import AbstractVirtualCapability, VirtualCapabili
 class BuildingPosition(AbstractVirtualCapability):
     def __init__(self, server):
         super().__init__(server)
+        self.functionality = {"GetBuildingPosition": None}
 
     def GetKobukiPosition(self, params: dict) -> dict:
         if self.functionality["GetBuildingPosition"] is not None:
