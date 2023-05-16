@@ -10,14 +10,14 @@ from AbstractVirtualCapability import AbstractVirtualCapability, VirtualCapabili
 class BuildingPosition(AbstractVirtualCapability):
     def __init__(self, server):
         super().__init__(server)
-        self.functionality = {"GetBuildingPosition": None}
+        self.functionality = {"GetViconPosition": None}
 
-    def GetBuildingPosition(self, params: dict) -> dict:
-        if self.functionality["GetBuildingPosition"] is not None:
+    def GetViconPosition(self, params: dict) -> dict:
+        if self.functionality["GetViconPosition"] is not None:
             vicon_name = params["SimpleStringParameter"]
             if not isinstance(vicon_name, str):
                 raise TypeError("Parameter of Function has to be a String")
-            pos = self.functionality["GetBuildingPosition"](vicon_name)
+            pos = self.functionality["GetViconPosition"](vicon_name)
             return {"Position3D": pos}
         else:
             return {"Position3D": [0., 0., 0.]}
