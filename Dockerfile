@@ -24,7 +24,7 @@ RUN source ~/.bashrc
 ADD ros_ws /ros_ws
 COPY protocols /etc
 
-COPY /BuildingPosition.py /ros_ws/src/building_positions
+COPY /ViconPosition.py /ros_ws/src/building_positions
 COPY /AbstractVirtualCapability.py /ros_ws/src/building_positions
 COPY /requirements /var
 
