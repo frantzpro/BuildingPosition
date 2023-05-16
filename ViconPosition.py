@@ -7,7 +7,7 @@ from time import sleep
 from AbstractVirtualCapability import AbstractVirtualCapability, VirtualCapabilityServer, formatPrint
 
 
-class BuildingPosition(AbstractVirtualCapability):
+class ViconPosition(AbstractVirtualCapability):
     def __init__(self, server):
         super().__init__(server)
         self.functionality = {"GetViconPosition": None}
