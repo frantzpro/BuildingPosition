@@ -31,13 +31,13 @@ def get_position(vicon_name):
 
 if __name__ == '__main__':
 	# starts the node
-	rospy.init_node("building_positions", anonymous=True)
-	rate = rospy.Rate(20)
+	rospy.init_node('rosnode', xmlrpc_port=int(os.environ["xmlrpc_port"]), tcpros_port=int(os.environ["tcpros_port"]))
+	rate = rospy.Rate(25)
 
 	tfBuffer = tf2_ros.Buffer()
 	listener = tf2_ros.TransformListener(tfBuffer)
 
-	server = VirtualCapabilityServer(int(rospy.get_param('~semantix_port')))
+	server = VirtualCapabilityServer(int(rospy.get_param('~semantix_port')), socket.gethostbyname(socket.gethostname()))
 	kobuki = ViconPosition(server)
 
 	kobuki.functionality["GetViconPosition"] = get_position

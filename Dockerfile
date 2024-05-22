@@ -2,6 +2,12 @@ FROM ros:noetic
 SHELL ["/bin/bash", "-c"]
 
 ENV semantix_port=7500
+ENV xmlrpc_port=45100
+ENV tcpros_port=45101
+ENV DEBIAN_FRONTEND=noninteractive
+ENV ROS_IP=127.0.0.1
+ENV ROS_MASTER_URI=http://127.0.0.1:11311
+
 #ENV ROS_MASTER_URI=http://172.20.34.240:11311
 
 # ROS-Noetic Setup
