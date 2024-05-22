@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import time
 import os
-from socket import socket
+import socket
 
 import rospy
 import tf2_ros
