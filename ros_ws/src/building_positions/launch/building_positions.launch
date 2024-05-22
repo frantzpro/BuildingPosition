@@ -10,7 +10,7 @@
         <arg name="server" value="172.20.37.251" />
     </include>
 
-    <node pkg="building_positions" type="building_positions.py" name="joy_reader">
+    <node pkg="building_positions" type="building_positions.py" name="vicon_position">
         <param name="world" value="$(arg vicon_map)"/>
         <param name="position" value="turtlebot/position"/>
         <param name="map" value="turtlebot/map"/>
