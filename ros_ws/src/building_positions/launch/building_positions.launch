@@ -9,7 +9,9 @@
     <include file="$(find vrpn_client_ros)/launch/sample.launch">
         <arg name="server" value="172.20.37.251" />
     </include>
-
+    
+    <node name="tf_publisher" pkg="tf" type="static_transform_publisher" args="0 0 1 0 0 0 1 world luca 5"/>
+    
     <node pkg="building_positions" type="building_positions.py" name="vicon_position">
         <param name="world" value="$(arg vicon_map)"/>
         <param name="position" value="turtlebot/position"/>
