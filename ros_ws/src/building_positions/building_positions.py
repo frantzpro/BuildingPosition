@@ -32,19 +32,25 @@ def get_position(vicon_name):
 
 
 if __name__ == '__main__':
-	# starts the node
-	rospy.init_node('rosnode', xmlrpc_port=int(os.environ["xmlrpc_port"]), tcpros_port=int(os.environ["tcpros_port"]))
-	rate = rospy.Rate(25)
+	try:
+		# starts the node
+		rospy.init_node('building_positions')
+		rate = rospy.Rate(25)
 
-	tfBuffer = tf2_ros.Buffer()
-	listener = tf2_ros.TransformListener(tfBuffer)
+		tfBuffer = tf2_ros.Buffer()
+		listener = tf2_ros.TransformListener(tfBuffer)
 
-	server = VirtualCapabilityServer(int(rospy.get_param('~semantix_port')), socket.gethostbyname(socket.gethostname()))
-	kobuki = ViconPosition(server)
+		server = VirtualCapabilityServer(int(rospy.get_param('~semantix_port')), "0.0.0.0")
+		kobuki = ViconPosition(server)
 
-	kobuki.functionality["GetViconPosition"] = get_position
+		kobuki.functionality["GetViconPosition"] = get_position
 
-	kobuki.start()
+		kobuki.start()
+		rospy.loginfo("ROS node started successfully")
 
-	while not rospy.is_shutdown() and server.running:
-		rate.sleep()
+		while not rospy.is_shutdown() and server.running:
+			rate.sleep()
+	except KeyError as e:
+	        rospy.logerr("Environment variable missing: %s", e)
+	except Exception as e:
+	        rospy.logerr("Unhandled exception: %s", e)
